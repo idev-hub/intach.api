@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "node ace build --production",
-    "start": "node build/server.js",
+    "start": "ENV_SILENT=true node build/server.js",
     "dev": "node ace serve --watch",
     "migration:run": "node ace migration:run",
     "migration:rollback": "node ace migration:rollback",
