@@ -42,7 +42,7 @@ const databaseConfig: DatabaseConfig & { orm: Partial<OrmConfig> } = {
         user: Env.get('PG_USER'),
         password: Env.get('PG_PASSWORD', ''),
         database: Env.get('PG_DB_NAME'),
-        ssl: (Env.get('PG_USER') === 'development') ? false : {
+        ssl: (Env.get('NODE_ENV') === 'development') ? false : {
           rejectUnauthorized: false
         }
       },
