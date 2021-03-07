@@ -8,7 +8,7 @@
     "dev": "node ace serve --watch",
     "migration:run": "node ace migration:run",
     "migration:rollback": "node ace migration:rollback",
-    "db:seed": "node ace db:seed --files=DefaultSeeder"
+    "db:seed": "node ace db:seed -i"
   },
   "devDependencies": {
 
