@@ -68,7 +68,10 @@ export default class CollegesController {
     const parser = parsers.get(handler.name)
     if ( !parser ) throw new HttpException('Парсер не назначен')
 
-    return new parser().getLessons({ params: { date: params.date, group: params.param }, settings: handler.settings })
+    return new parser().getLessons({
+      params: { date: params.date, group: decodeURI(params.param) },
+      settings: handler.settings
+    })
   }
 
   public async getLessonsWeek ({ params }) {
@@ -79,7 +82,7 @@ export default class CollegesController {
     if ( !parser ) throw new HttpException('Парсер не назначен')
 
     return new parser().getLessonsWeek({
-      params: { group: params.param, week: params.week || 0 },
+      params: { group: decodeURI(params.param), week: params.week || 0 },
       settings: handler.settings
     })
   }
