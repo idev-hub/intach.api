@@ -16,9 +16,14 @@ export default class ChgpgtHandler extends Handler {
     const params: string[] = []
 
     clients.forEach(client => {
-      const param = params.find(val => val === client.param)
-      if ( client.param && !param ) {
-        params.push(client.param)
+      if(client){
+        const param = params.find((val) => {
+          if(client.param && val.toLowerCase() === (client.param).toLowerCase()) return val
+        })
+
+        if ( client.param && !param ) {
+          params.push(client.param.toString().toUpperCase())
+        }
       }
     })
 
