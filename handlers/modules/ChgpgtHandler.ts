@@ -1,14 +1,28 @@
 import { DateTime } from "luxon";
 import axios from "axios";
 import Handler from "../Handler";
+import Client from "App/Models/Client";
 
 export default class ChgpgtHandler extends Handler {
   constructor () {
     super()
   }
 
-  async getGroups () {
-    return null
+  async getGroups (req) {
+    const { id } = req.params
+    const clients = await Client.query().where({
+      college_id: id
+    })
+    const params: string[] = []
+
+    clients.forEach(client => {
+      const param = params.find(val => val === client.param)
+      if ( client.param && !param ) {
+        params.push(client.param)
+      }
+    })
+
+    return params
   }
 
   async getLessonsWeek () {

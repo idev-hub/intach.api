@@ -58,7 +58,10 @@ export default class CollegesController {
     const parser = parsers.get(handler.name)
     if ( !parser ) throw new HttpException('Парсер не назначен')
 
-    return new parser().getGroups({ params: { corps: request.input('corps') }, settings: handler.settings })
+    return new parser().getGroups({
+      params: { id: params.id, corps: request.input('corps') },
+      settings: handler.settings
+    })
   }
 
   public async getLessons ({ params }) {
