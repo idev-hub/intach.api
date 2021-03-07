@@ -43,4 +43,11 @@ export default class CitiesController {
     .select('*')
     .where({ region_id: params.id })
   }
+
+  public async search ({ params }: HttpContextContract) {
+    return Database.query()
+    .from('cities')
+    .select('*')
+    .where('name', 'LIKE', `%${ decodeURI(params.search) }%`).first()
+  }
 }

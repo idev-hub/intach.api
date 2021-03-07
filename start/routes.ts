@@ -28,6 +28,7 @@ Route.group(() => {
 
   Route.resource('cities', 'CitiesController').apiOnly()
   Route.get('cities/region/:id', 'CitiesController.showByRegion')
+  Route.get('cities/search/:search', 'CitiesController.search')
   Route.resource('clients', 'ClientsController').apiOnly()
 
   Route.resource('colleges', 'CollegesController').apiOnly()
